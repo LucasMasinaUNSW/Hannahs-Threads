@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 
 interface ActivityProps {
@@ -6,14 +7,10 @@ interface ActivityProps {
 }
 
 function Activity(props: ActivityProps) {
-    
-    const [count, setCount] = useState(0);
-
     return (
       <div className={props.activityName}>
         <p>{props.activityName} activity</p>
-        <h3>Count: {count}</h3> 
-        <button onClick={() => setCount(count + 1)}>Go to activity</button>
+        <Link to={`/${props.activityName}`}>Go to activity</Link>
       </div>
     );
   }
