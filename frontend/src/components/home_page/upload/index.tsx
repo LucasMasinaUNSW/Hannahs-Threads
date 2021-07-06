@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import UploadButton from './upload_button';
+import UploadPreview from './upload_preview';
 
 const useStyles = makeStyles({
   root: {
@@ -25,14 +27,15 @@ function Upload() {
 
   return (
     <div className={classes.root}>
-      <UploadButton handleClick={handleClick}/>
+      {!files && <UploadButton handleClick={handleClick}/>}
       {files && Array.from(files, filesToImagePreviews)}
+      {files && <Button variant="contained" color="primary" component="span">Submit</Button>}
     </div>
   );
 }
 
 const filesToImagePreviews = (file: File) => {
-  return <img src={URL.createObjectURL(file)} alt={file.name} />; // TODO if possible use URL.revokeObjectURL() to save memory
+  return <UploadPreview imageSource={URL.createObjectURL(file)} imageName={file.name}/> // TODO if possible use URL.revokeObjectURL() to save memory
 }
 
 export default Upload;
