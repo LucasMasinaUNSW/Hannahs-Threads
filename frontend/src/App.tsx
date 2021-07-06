@@ -5,10 +5,12 @@ import ClosetPage from "./components/closet_page";
 import DesignsPage from "./components/designs_page";
 import FabricsPage from "./components/fabrics_page";
 import Home from "./components/home_page";
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 function App() {
-  return (
+  return (  
     <div className="App">
+      <CssBaseline/>
       <Router>
         <Switch>
           <Route path="/closet">
