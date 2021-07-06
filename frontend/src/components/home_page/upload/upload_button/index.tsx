@@ -13,12 +13,16 @@ const useStyles = makeStyles({
   },
 });
 
-function UploadButtons() {
+interface UploadButtonProps {
+  handleClick: React.ChangeEventHandler<HTMLInputElement>
+}
+
+function UploadButton(props: UploadButtonProps) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <input accept="image/*" className={classes.input} id="contained-button-file" multiple type="file"/>
+      <input accept="image/*" className={classes.input} id="contained-button-file" multiple type="file" onChange={props.handleClick}/>
       <label htmlFor="contained-button-file">
         <Button variant="contained" color="primary" component="span">Upload</Button>
       </label>
@@ -26,4 +30,4 @@ function UploadButtons() {
   );
 }
 
-export default UploadButtons;
+export default UploadButton;

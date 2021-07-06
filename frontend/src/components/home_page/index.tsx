@@ -3,7 +3,7 @@ import Activity from "./activity_element";
 import Banner from "./banner";
 import Grid from '@material-ui/core/Grid';
 import CSS from 'csstype';
-import UploadButtons from "./upload_button";
+import Upload from "./upload";
 
 const inlineStyles: CSS.Properties = {
   margin: 'auto',
@@ -25,7 +25,7 @@ function Home() {
           <Activity activityName="closet"/>
         </Grid>
         <Grid item xs={12}>
-          <UploadButtons/>
+          <Upload/>
         </Grid>
       </Grid>
     </div>
