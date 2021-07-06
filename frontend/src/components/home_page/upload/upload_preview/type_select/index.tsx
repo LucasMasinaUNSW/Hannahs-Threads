@@ -4,6 +4,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import ItemInfo from '../../interfaces';
 
 const useStyles = makeStyles({
   formControl: {
@@ -16,8 +17,8 @@ const useStyles = makeStyles({
 });
 
 interface typeSelectProps {
-  handleChange: React.ChangeEventHandler<{ value: unknown }>,
-  imageType: string,
+  handleChange: any,
+  itemInfo: ItemInfo,
 }
 
 function TypeSelect(props: typeSelectProps) {
@@ -30,8 +31,8 @@ function TypeSelect(props: typeSelectProps) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={props.imageType}
-          onChange={props.handleChange}
+          value={props.itemInfo.itemType}
+          onChange={(e) => props.handleChange(e.target.value, props.itemInfo.id)}
         >
           <MenuItem value={"design"}>Design</MenuItem>
           <MenuItem value={"fabric"}>Fabric</MenuItem>
