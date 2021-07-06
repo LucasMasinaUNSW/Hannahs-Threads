@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -33,23 +34,23 @@ function Activity(props: ActivityProps) {
 
   return (
     <Card className={classes.root}>
-      <CardContent>
+      <CardActionArea>
         <CardMedia
           className={classes.media}
           image="/logo512.png"
           title="Contemplative Reptile"
         />
-        <Typography gutterBottom variant="h5" component="h2">
-          {props.activityName} activity card
-        </Typography>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Click below to access the {props.activityName} activity
-        </Typography>
-      </CardContent>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            {props.activityName} activity card
+          </Typography>
+          <Typography className={classes.title} color="textSecondary" gutterBottom>
+            Click below to access the {props.activityName} activity
+          </Typography>
+        </CardContent>
+      </CardActionArea>
       <CardActions>
-        <Link to={`/${props.activityName}`}>
-          <Button variant="contained" color="primary" size="large">Go to activity</Button>
-        </Link>
+        <Button component={Link} to={`/${props.activityName}`} color="primary" size="large">Go to {props.activityName}</Button>
       </CardActions>
     </Card>
   );

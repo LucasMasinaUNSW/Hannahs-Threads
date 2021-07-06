@@ -13,22 +13,14 @@ function Home() {
     <div className="Home page">
       <Banner/>
       <Grid container spacing={0} justify="center" alignItems="center" style={inlineStyles}>
-        <Grid container item xs={6}>
-          <Grid container item direction="column" spacing={10}>
-            <Grid item xs={12}>
-              <Activity activityName="designs"/>
-            </Grid>
-            <Grid item xs={12}>
-              <Activity activityName="fabrics"/>
-            </Grid>
-          </Grid>
+        <Grid item xs={4}>
+          <Activity activityName="designs"/>
         </Grid>
-        <Grid container item xs={6}>
-          <Grid container item direction="column" spacing={1}>
-            <Grid item xs={12}>
-              <Activity activityName="closet"/>
-            </Grid>
-          </Grid>
+        <Grid item xs={4}>
+          <Activity activityName="fabrics"/>
+        </Grid>
+        <Grid item xs={4}>
+          <Activity activityName="closet"/>
         </Grid>
       </Grid>
     </div>
