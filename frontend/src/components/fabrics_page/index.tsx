@@ -1,6 +1,6 @@
 function FabricsPage() {
     return(
-        <div className="FabricsPage">
+        <div className="Fabrics page">
             <p>Fabrics Page</p>
         </div>
     );

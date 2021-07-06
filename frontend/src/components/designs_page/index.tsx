@@ -1,6 +1,6 @@
 function DesignsPage() {
     return (
-        <div className="DesignsPage">
+        <div className="Designs page">
             <p>Designs Page</p>
         </div>
     );

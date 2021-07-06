@@ -1,7 +1,7 @@
 
 function ClosetPage() {
     return (
-        <div className="ClosetPage">
+        <div className="Closet page">
             <p>Closet Page</p>
         </div>
     );
