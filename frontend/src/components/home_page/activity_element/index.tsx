@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 
 
 interface ActivityProps {
-    activityName: string
+  activityName: string
 }
 
 function Activity(props: ActivityProps) {
-    return (
-      <div className={props.activityName}>
-        <p>{props.activityName} activity</p>
-        <Link to={`/${props.activityName}`}>Go to activity</Link>
-      </div>
-    );
-  }
+  return (
+    <div className={props.activityName}>
+      <p>{props.activityName} activity</p>
+      <Link to={`/${props.activityName}`}>Go to activity</Link>
+    </div>
+  );
+}
   
 export default Activity;
