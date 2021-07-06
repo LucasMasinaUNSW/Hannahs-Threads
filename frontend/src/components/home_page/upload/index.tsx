@@ -21,7 +21,6 @@ function Upload() {
   const [files, updateFiles] = useState<FileList|null>(null);
 
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("Image selected!");
     updateFiles(e.target.files);
   }
 
