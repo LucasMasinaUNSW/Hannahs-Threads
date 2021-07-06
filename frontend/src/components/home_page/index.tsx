@@ -3,7 +3,7 @@ import Banner from "./banner";
 
 function Home() {
   return (
-    <div className="Home">
+    <div className="Home page">
       <Banner/>
       <Activity activityName="closet"/>
       <Activity activityName="designs"/>
