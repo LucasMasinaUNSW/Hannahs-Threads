@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 
 interface uploadPreviewProps {
   itemInfo: ItemInfo,
-  handleChange: any
+  handleChange: (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => void,
 }
 
 function UploadPreview(props: uploadPreviewProps) {

@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 interface typeSelectProps {
-  handleChange: any,
+  handleChange: (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => void,
   itemInfo: ItemInfo,
 }
 
@@ -32,7 +32,7 @@ function TypeSelect(props: typeSelectProps) {
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={props.itemInfo.itemType}
-          onChange={(e) => props.handleChange(e.target.value, props.itemInfo.id)}
+          onChange={(e) => props.handleChange(e, props.itemInfo.id)}
         >
           <MenuItem value={"design"}>Design</MenuItem>
           <MenuItem value={"fabric"}>Fabric</MenuItem>

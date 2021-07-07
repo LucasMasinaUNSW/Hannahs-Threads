@@ -17,8 +17,6 @@ const useStyles = makeStyles({
 });
 
 function Upload() {
-  console.log('Rendering Upload');
-  
   const classes = useStyles();
 
   const [files, updateFiles] = useState<FileList|null>(null);
@@ -33,14 +31,20 @@ function Upload() {
     }
   }
 
-  const handleTypeChange = (e: React.ChangeEvent<HTMLInputElement>, itemId: number) => {
-    itemInfos[itemId].itemType = e.target.value;
-    updateItemInfos(itemInfos);
+  const handleTypeChange = (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => {
+    // Gets copy of existing itemInfos, replaces target itemInfo and updates itemInfos
+    let oldItemInfos = [...itemInfos];
+    let newItemInfo = {
+      ...oldItemInfos[itemId],
+      itemType: e.target.value as string
+    };
+    oldItemInfos[itemId] = newItemInfo;
+    updateItemInfos(oldItemInfos);
   }
 
-  const fileToItemInfo = (file: File): ItemInfo => {
+  const fileToItemInfo = (file: File, index: number): ItemInfo => {
     return {
-      id: itemInfos.length + 1,
+      id: index,
       imageSource: URL.createObjectURL(file), // TODO if possible use URL.revokeObjectURL() to save memory
       imageName: file.name,
       itemType: '',
