@@ -20,7 +20,7 @@ function Upload() {
   const classes = useStyles();
 
   const [files, updateFiles] = useState<FileList|null>(null);
-  const [itemInfos, updateItemInfos] = useState<ItemInfo[]>([])
+  const [itemInfos, updateItemInfos] = useState<ItemInfo[]>([]);
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newFiles = e.target.files;
@@ -42,6 +42,17 @@ function Upload() {
     updateItemInfos(oldItemInfos);
   }
 
+  const handleDescriptionChange = (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => {
+    // Gets copy of existing itemInfos, replaces target itemInfo and updates itemInfos
+    let oldItemInfos = [...itemInfos];
+    let newItemInfo = {
+      ...oldItemInfos[itemId],
+      description: e.target.value as string
+    };
+    oldItemInfos[itemId] = newItemInfo;
+    updateItemInfos(oldItemInfos);
+  }
+
   const fileToItemInfo = (file: File, index: number): ItemInfo => {
     return {
       id: index,
@@ -55,7 +66,7 @@ function Upload() {
   return (
     <div className={classes.root}>
       {!files && <UploadButton handleUpload={handleUpload}/>}
-      {files && itemInfos.map(itemInfo => <UploadPreview handleChange={handleTypeChange} itemInfo={itemInfo}/>)}
+      {files && itemInfos.map(itemInfo => <UploadPreview handleTypeChange={handleTypeChange} handleDescriptionChange={handleDescriptionChange} itemInfo={itemInfo}/>)}
       {files && <Button variant="contained" color="primary" component="span">Submit</Button>}
     </div>
   );

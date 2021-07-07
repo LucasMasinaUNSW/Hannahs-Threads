@@ -17,8 +17,8 @@ const useStyles = makeStyles({
 });
 
 interface typeSelectProps {
-  handleChange: (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => void,
   itemInfo: ItemInfo,
+  handleChange: (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => void,
 }
 
 function TypeSelect(props: typeSelectProps) {
@@ -27,7 +27,7 @@ function TypeSelect(props: typeSelectProps) {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Image Type</InputLabel>
+        <InputLabel id="demo-simple-select-label">Item Type</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"

@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography'
 import TypeSelect from "./type_select";
 import ItemInfo from "../interfaces";
+import ItemDescription from "./item_description";
 
 const useStyles = makeStyles({
   root: {
@@ -26,7 +27,8 @@ const useStyles = makeStyles({
 
 interface uploadPreviewProps {
   itemInfo: ItemInfo,
-  handleChange: (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => void,
+  handleTypeChange: (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => void,
+  handleDescriptionChange: (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => void,
 }
 
 function UploadPreview(props: uploadPreviewProps) {
@@ -44,7 +46,9 @@ function UploadPreview(props: uploadPreviewProps) {
               <Typography gutterBottom variant="h5" component="h2">
                 Upload preview heading
               </Typography>
-              <TypeSelect handleChange={props.handleChange} itemInfo={props.itemInfo} />
+              <TypeSelect handleChange={props.handleTypeChange} itemInfo={props.itemInfo} />
+              <br/><br/>
+              <ItemDescription handleChange={props.handleDescriptionChange} itemInfo={props.itemInfo}/>
             </CardContent>
           </Grid>
           <Grid item xs={4}>
