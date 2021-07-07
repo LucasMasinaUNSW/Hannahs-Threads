@@ -35,7 +35,7 @@ function UploadPreview(props: uploadPreviewProps) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={`${classes.root} ${classes.pos}`}>
       <CardActionArea>
         <Grid container spacing={0} justify="center" alignItems="flex-start">
           <Grid item xs={4}>
@@ -44,7 +44,7 @@ function UploadPreview(props: uploadPreviewProps) {
           <Grid item xs={8}>
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                Upload preview heading
+                {props.itemInfo.imageName}
               </Typography>
               <TypeSelect handleChange={props.handleTypeChange} itemInfo={props.itemInfo} />
               <br/><br/>
