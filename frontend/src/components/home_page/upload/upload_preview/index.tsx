@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     fontSize: 14,
   },
   pos: {
-    marginBottom: 20,
+    marginBottom: 30,
   },
   media: {
     height: 300,

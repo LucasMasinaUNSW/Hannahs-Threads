@@ -59,6 +59,10 @@ function Upload() {
     updateItemInfos(oldItemInfos.filter(i => i.id !== itemId));
   }
 
+  const handleSubmit = () => {
+    // TODO upload files to S3
+  }
+
   const fileToItemInfo = (file: File, index: number): ItemInfo => {
     return {
       id: index,
@@ -73,7 +77,7 @@ function Upload() {
     <div className={classes.root}>
       {itemInfos.length === 0 && <UploadButton handleUpload={handleUpload}/>}
       {itemInfos.length > 0 && itemInfos.map(itemInfo => <UploadPreview handleTypeChange={handleTypeChange} handleDescriptionChange={handleDescriptionChange} handleItemDeletion={handleItemDeletion} itemInfo={itemInfo}/>)}
-      {itemInfos.length > 0 && <Button variant="contained" color="primary" component="span">Submit</Button>}
+      {itemInfos.length > 0 && <Button variant="contained" color="primary" component="span" onClick={handleSubmit}>Submit</Button>}
     </div>
   );
 }
