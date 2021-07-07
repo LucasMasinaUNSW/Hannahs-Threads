@@ -53,6 +53,12 @@ function Upload() {
     updateItemInfos(oldItemInfos);
   }
 
+  const handleItemDeletion = (itemId: number) => {
+    // Gets copy of existing itemInfos, filters out target itemInfo and updates itemInfos
+    let oldItemInfos = [...itemInfos];
+    updateItemInfos(oldItemInfos.filter(i => i.id !== itemId));
+  }
+
   const fileToItemInfo = (file: File, index: number): ItemInfo => {
     return {
       id: index,
@@ -65,9 +71,9 @@ function Upload() {
 
   return (
     <div className={classes.root}>
-      {!files && <UploadButton handleUpload={handleUpload}/>}
-      {files && itemInfos.map(itemInfo => <UploadPreview handleTypeChange={handleTypeChange} handleDescriptionChange={handleDescriptionChange} itemInfo={itemInfo}/>)}
-      {files && <Button variant="contained" color="primary" component="span">Submit</Button>}
+      {itemInfos.length === 0 && <UploadButton handleUpload={handleUpload}/>}
+      {itemInfos.length > 0 && itemInfos.map(itemInfo => <UploadPreview handleTypeChange={handleTypeChange} handleDescriptionChange={handleDescriptionChange} handleItemDeletion={handleItemDeletion} itemInfo={itemInfo}/>)}
+      {itemInfos.length > 0 && <Button variant="contained" color="primary" component="span">Submit</Button>}
     </div>
   );
 }

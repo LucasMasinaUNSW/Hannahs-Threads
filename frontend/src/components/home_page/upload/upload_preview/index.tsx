@@ -1,9 +1,12 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography'
 import TypeSelect from "./type_select";
@@ -18,10 +21,13 @@ const useStyles = makeStyles({
     fontSize: 14,
   },
   pos: {
-    marginBottom: 12,
+    marginBottom: 20,
   },
   media: {
     height: 300,
+  },
+  button: {
+    margin: 'auto',
   },
 });
 
@@ -29,6 +35,7 @@ interface uploadPreviewProps {
   itemInfo: ItemInfo,
   handleTypeChange: (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => void,
   handleDescriptionChange: (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => void,
+  handleItemDeletion: (id: number) => void,
 }
 
 function UploadPreview(props: uploadPreviewProps) {
@@ -51,10 +58,19 @@ function UploadPreview(props: uploadPreviewProps) {
               <ItemDescription handleChange={props.handleDescriptionChange} itemInfo={props.itemInfo}/>
             </CardContent>
           </Grid>
-          <Grid item xs={4}>
-          </Grid>
         </Grid>
       </CardActionArea>
+      <CardActions>
+        <Button
+          variant="contained"
+          color="secondary"
+          className={classes.button}
+          startIcon={<DeleteIcon />}
+          onClick={() => props.handleItemDeletion(props.itemInfo.id)}
+        >
+          Delete
+        </Button>
+      </CardActions>
     </Card>
   );
 }
