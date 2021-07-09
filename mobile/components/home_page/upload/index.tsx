@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, GestureResponderEvent, View } from "react-native";
 import UploadButton from './upload_button';
 import UploadPreview from './upload_preview';
-import ItemInfo from './interfaces';
+import { ItemInfo, ItemSelectionType } from './interfaces';
 import { ImagePickerResult, launchImageLibraryAsync, MediaTypeOptions } from 'expo-image-picker';
 import { ImageInfo } from 'expo-image-picker/build/ImagePicker.types';
 // import { ImageBrowser } from 'expo-image-picker-multiple'; // TODO implement multiple image selection
@@ -35,15 +35,15 @@ export default function Upload() {
     };
   }
 
-  const handleTypeChange = (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => {
+  const handleTypeChange = (v: ItemSelectionType, itemId: number) => {
     // Gets copy of existing itemInfos, replaces target itemInfo and updates itemInfos
-    // let oldItemInfos = [...itemInfos];
-    // let newItemInfo = {
-    //   ...oldItemInfos[itemId],
-    //   itemType: e.target.value as string
-    // };
-    // oldItemInfos[itemId] = newItemInfo;
-    // updateItemInfos(oldItemInfos);
+    let oldItemInfos = [...itemInfos];
+    let newItemInfo = {
+      ...oldItemInfos[itemId],
+      itemType: v ? v.toString() : ''
+    };
+    oldItemInfos[itemId] = newItemInfo;
+    updateItemInfos(oldItemInfos);
   }
 
   const handleDescriptionChange = (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => {
