@@ -4,11 +4,15 @@ import { NavigationProp } from '@react-navigation/core';
 import Activities from './activities';
 import Upload from './upload';
 
-export default function Home({ navigation }: NavigationProp<any, any> ) {
+interface HomeProps {
+  navigation: NavigationProp<any, any>
+}
+
+export default function Home(props: HomeProps) {
   return (
     <View style={styles.container}>
       <Text>Hannah's Threads</Text>
-      <Activities navigation={navigation} />
+      <Activities navigation={props.navigation} />
       <Upload />
     </View>
   );

@@ -3,12 +3,17 @@ import React from "react";
 import { ScrollView } from "react-native";
 import Activity from "./activity_element";
 
-export default function Activities({ navigation }: NavigationProp<any, any>) {
+interface ActivitiesProps {
+  navigation: NavigationProp<any, any>
+}
+
+
+export default function Activities(props: ActivitiesProps) {
   return (
     <ScrollView>
-      <Activity activityName="designs" navigation={navigation} />
-      <Activity activityName="fabrics" navigation={navigation} />
-      <Activity activityName="closet" navigation={navigation} />
+      <Activity activityName="designs" navigation={props.navigation} />
+      <Activity activityName="fabrics" navigation={props.navigation} />
+      <Activity activityName="closet" navigation={props.navigation} />
     </ScrollView>
   );
 }
