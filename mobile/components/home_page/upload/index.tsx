@@ -3,19 +3,36 @@ import { Button, GestureResponderEvent, View } from "react-native";
 import UploadButton from './upload_button';
 import UploadPreview from './upload_preview';
 import ItemInfo from './interfaces';
+import { ImagePickerResult, launchImageLibraryAsync, MediaTypeOptions } from 'expo-image-picker';
+import { ImageInfo } from 'expo-image-picker/build/ImagePicker.types';
+// import { ImageBrowser } from 'expo-image-picker-multiple'; // TODO implement multiple image selection
 
 export default function Upload() {
 
-  const [files, updateFiles] = useState<FileList|null>(null);
   const [itemInfos, updateItemInfos] = useState<ItemInfo[]>([]);
 
-  const handleUpload = (e: GestureResponderEvent) => {
-    // let newFiles = e.target.files;
-    // updateFiles(newFiles);
-    // if (newFiles) {
-    //   let newItemInfos: ItemInfo[] = Array.from(newFiles, fileToItemInfo);
-    //   updateItemInfos(newItemInfos);
-    // }
+  const handleUpload = async () => {
+    let newImage: ImagePickerResult = await launchImageLibraryAsync({
+      mediaTypes: MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!newImage.cancelled) {
+      let newItemInfos: ItemInfo[] = [fileToItemInfo(newImage, 0)];
+      updateItemInfos(newItemInfos);
+    }
+  }
+
+  const fileToItemInfo = (image: ImageInfo, index: number): ItemInfo => {
+    return {
+      id: index,
+      imageSource: image.uri,
+      imageName: image.uri, // TODO get image file name
+      itemType: '',
+      description: ''
+    };
   }
 
   const handleTypeChange = (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => {
@@ -48,16 +65,6 @@ export default function Upload() {
 
   const handleSubmit = () => {
     // TODO save files
-  }
-
-  const fileToItemInfo = (file: File, index: number): ItemInfo => {
-    return {
-      id: index,
-      imageSource: URL.createObjectURL(file), // TODO if possible use URL.revokeObjectURL() to save memory
-      imageName: file.name,
-      itemType: '',
-      description: ''
-    };
   }
 
   return (

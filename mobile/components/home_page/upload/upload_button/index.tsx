@@ -7,6 +7,6 @@ interface UploadButtonProps {
 
 export default function UploadButton(props: UploadButtonProps) {
   return (
-    <Button onPress={() => {props.handleUpload}} title="Upload"/>
+    <Button onPress={props.handleUpload} title="Upload"/>
   );
 }
