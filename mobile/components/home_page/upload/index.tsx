@@ -46,15 +46,15 @@ export default function Upload() {
     updateItemInfos(oldItemInfos);
   }
 
-  const handleDescriptionChange = (e: React.ChangeEvent<{ value: unknown }>, itemId: number) => {
+  const handleDescriptionChange = (v: string, itemId: number) => {
     // Gets copy of existing itemInfos, replaces target itemInfo and updates itemInfos
-    // let oldItemInfos = [...itemInfos];
-    // let newItemInfo = {
-    //   ...oldItemInfos[itemId],
-    //   description: e.target.value as string
-    // };
-    // oldItemInfos[itemId] = newItemInfo;
-    // updateItemInfos(oldItemInfos);
+    let oldItemInfos = [...itemInfos];
+    let newItemInfo = {
+      ...oldItemInfos[itemId],
+      description: v
+    };
+    oldItemInfos[itemId] = newItemInfo;
+    updateItemInfos(oldItemInfos);
   }
 
   const handleItemDeletion = (itemId: number) => {
