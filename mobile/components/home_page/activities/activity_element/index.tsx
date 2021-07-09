@@ -1,3 +1,4 @@
+import { NavigationProp } from "@react-navigation/native";
 import React from "react";
 import { View, Image, Text, Button } from "react-native";
 
@@ -8,7 +9,8 @@ const logo = {
 };
 
 interface ActivityProps {
-  activityName: string
+  activityName: string,
+  navigation: NavigationProp<any, any>
 }
 
 export default function Activity(props: ActivityProps) {
@@ -17,7 +19,7 @@ export default function Activity(props: ActivityProps) {
       <Image source={logo} />
       <Text>{props.activityName} activity card</Text>
       <Text>Click below to access the {props.activityName} activity</Text>
-      <Button onPress={() => {}} title={`Go to ${props.activityName}`}/>
+      <Button onPress={() => props.navigation.navigate(props.activityName)} title={`Go to ${props.activityName}`}/>
     </View>
     );
 }
