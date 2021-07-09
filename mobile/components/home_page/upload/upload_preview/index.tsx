@@ -1,6 +1,6 @@
 import React from "react";
 import ItemInfo from "../interfaces";
-import { FlatList, Text, View, Button } from 'react-native';
+import { FlatList, Image, Text, View, Button } from 'react-native';
 
 
 interface uploadPreviewProps {
@@ -14,13 +14,11 @@ function UploadPreview(props: uploadPreviewProps) {
 
   return (
     <View>
-      {/* <FlatList>
-      </FlatList> */}
-      <Text>Upload Preview Image</Text>
-      <Text>Upload Preview Image Name</Text>
-      <Text>Upload Preview Type Select</Text>
-      <Text>Upload Preview Description</Text>
-      <Button onPress={() => {}} title="Delete"/>
+      <Image source={{ uri: props.itemInfo.imageSource }} style={{ width: 200, height: 200 }} />
+      <Text>{props.itemInfo.imageName}</Text>
+      <Text>{props.itemInfo.itemType}</Text>
+      <Text>{props.itemInfo.description}</Text>
+      <Button onPress={() => props.handleItemDeletion(props.itemInfo.id)} title="Delete"/>
     </View>
   );
 }

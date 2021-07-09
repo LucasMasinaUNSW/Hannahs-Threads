@@ -59,8 +59,8 @@ export default function Upload() {
 
   const handleItemDeletion = (itemId: number) => {
     // Gets copy of existing itemInfos, filters out target itemInfo and updates itemInfos
-    // let oldItemInfos = [...itemInfos];
-    // updateItemInfos(oldItemInfos.filter(i => i.id !== itemId));
+    let oldItemInfos = [...itemInfos];
+    updateItemInfos(oldItemInfos.filter(i => i.id !== itemId));
   }
 
   const handleSubmit = () => {
